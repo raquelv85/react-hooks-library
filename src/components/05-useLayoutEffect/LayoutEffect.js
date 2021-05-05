@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useLayoutEffect, useRef} from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { useCounter } from "../../hooks/useCounter";
 
@@ -11,7 +11,13 @@ export const LayoutEffect = () => {
     `https://www.breakingbadapi.com/api/quotes/${counter}`
   );
 
-  const { author, quote } = !!data && data[0];
+  const { quote } = !!data && data[0];
+
+  const pRef = useRef();
+
+  useLayoutEffect(() => {
+    console.log(pRef.current.getBoundingClientRect())
+  }, [quote])
 
   return (
     <div>
@@ -20,9 +26,8 @@ export const LayoutEffect = () => {
 
   
         <blockquote className="blockquote text-end">
-          <p className="mb-0">{quote}</p>
+          <p ref={pRef} className="mb-0">{quote}</p>
         </blockquote>
-
 
       {!loading && (
         <button className="btn btn-primary" onClick={() => increment()}>
