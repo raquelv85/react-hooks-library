@@ -1,4 +1,5 @@
 import React from "react";
+import { Small } from './Small';
 import { useCounter } from "../../hooks/useCounter";
 
 import "../02-useEffect/effects.css";
@@ -12,7 +13,7 @@ export const Memorize = () => {
       <hr />
 
       <h2>
-        Counter: <small>{counter}</small>
+        Counter: <Small value={counter} />
       </h2>
 
       <button className="btn btn-primary" onClick={() => increment()}>
