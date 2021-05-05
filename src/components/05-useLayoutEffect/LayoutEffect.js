@@ -2,7 +2,7 @@ import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { useCounter } from "../../hooks/useCounter";
 
-import "../02-useEffect/effects.css";
+import "./layout.css";
 
 export const LayoutEffect = () => {
   const { counter, increment } = useCounter(1);
@@ -15,13 +15,12 @@ export const LayoutEffect = () => {
 
   return (
     <div>
-      <h1>Breaking Bad quotes</h1>
+      <h1>LayoutEffect</h1>
       <hr />
 
   
         <blockquote className="blockquote text-end">
           <p className="mb-0">{quote}</p>
-          <footer className="blockquote-footer mt-1"> {author} </footer>
         </blockquote>
 
 
