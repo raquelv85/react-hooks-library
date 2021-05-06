@@ -50,6 +50,10 @@ export const TodoApp = () => {
     dispatch(action);
   };
 
+  const handleComplete = (todoId) => {
+    dispatch({type: 'complete', payload: todoId})
+  }
+
   return (
     <div>
       <h1>TodoApp ({todos.length})</h1>
@@ -60,7 +64,7 @@ export const TodoApp = () => {
             {todos.map((todo) => {
               return (
                 <li className="list-group-item">
-                  <p>{todo.desc}</p>
+                  <p className={todo.done ? "complete" : ""} onClick={() => handleComplete(todo.id)}>{todo.desc}</p>
                   <button
                     className="btn btn-danger"
                     onClick={() => handleDelete(todo.id)}
