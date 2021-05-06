@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { todoReducer } from "./todoReducer";
+import {useForm} from '../../hooks/useForm'
 
 import "./styles.css";
 
@@ -13,13 +14,18 @@ const initialState = [
 
 export const TodoApp = () => {
   const [todos, dispatch] = useReducer(todoReducer, initialState);
+  const [{description}, handleInputChange, reset ] = useForm({description: ''})
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if(description.trim().length <= 1){
+      return
+    }
+
     const newTodo = {
       id: new Date().getTime(),
-      desc: "nueva tarea",
+      desc: description,
       done: false,
     }
 
@@ -28,7 +34,8 @@ export const TodoApp = () => {
       payload: newTodo
     }
 
-    dispatch(action)
+    dispatch(action);
+    reset();
   }
 
   return (
@@ -57,6 +64,8 @@ export const TodoApp = () => {
               type="text"
               name="description"
               placeholder="agregar tarea..."
+              value={description}
+              onChange={handleInputChange}
             />
             <button type="submit" className="btn btn-outline-primary mt-1 btn-block">Agregar</button>
           </form>
