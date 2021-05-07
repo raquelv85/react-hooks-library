@@ -66,21 +66,6 @@ export const TodoApp = () => {
             handleComplete={(id) => handleComplete(id)}
             handleDelete={(id) => handleDelete(id)}
           />
-          {/* <ul className="list-group list-group-flush">
-            {todos.map((todo) => {
-              return (
-                <li className="list-group-item">
-                  <p className={todo.done ? "complete" : ""} onClick={() => handleComplete(todo.id)}>{todo.desc}</p>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => handleDelete(todo.id)}
-                  >
-                    Borrar
-                  </button>
-                </li>
-              );
-            })}
-          </ul> */}
         </div>
         <div className="col-5">
           <h4>Agregar todo</h4>
